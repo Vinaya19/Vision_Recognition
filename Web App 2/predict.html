@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+	<style>
+	@font-face {
+		font-family: myFirstFont;
+		src: url(/static/edo.ttf);
+	}
+	@font-face {
+		font-family: mySecondFont;
+		src: url(/static/btfont.otf);
+	}
+	body{
+	background-image:url('/static/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+
+	#bg {
+  		background-color:rgba(51,51,51,0.8);
+  		width: match-parent;
+		height:100%;
+  		/*border: 1px solid black;*/
+  		padding: 50px;
+  		margin-top: 150px;
+		margin-left:50px;
+		margin-right:50px;
+		/*margin-bottom:50px;*/
+		font-size:100px;
+		font-family:myFirstFont;
+		color:white;
+		text-align:center;
+		}
+	img{
+		width:1280px;
+		height:1080px;
+	}
+	textarea{
+		background-color:rgba(51,51,51,0.8);
+		text-align:center;
+		border:0px;
+		width:2080px;
+		height:300px;
+		font-size:80px;
+		font-family:myFirstFont;
+		color:white;
+
+	}
+	button{
+		font-family: mySecondFont;
+		font-size:49px;
+		margin-left:460px;
+		margin-top:150px;
+		text-align:center;
+		}
+	</style>
+</head>
+<body onload="load()">
+	<div id="bg">
+		<img src="{{url_for('static',filename='file.jpg')}}" alt="">
+		<br><br>
+		<textarea id="txtinput">{{data}}</textarea>
+		<br>
+		<button id="btnspeak">Speak</button>
+		
+	</div>
+	<script>		
+		function load(){
+			var textinput=document.querySelector('#txtinput');
+			var btnspeak=document.querySelector('#btnspeak');
+			var tts=window.speechSynthesis;
+			var voices=tts.getVoices();
+			var toSpeak=new SpeechSynthesisUtterance(textinput.value);
+			tts.speak(toSpeak);
+		}
+		var textinput=document.querySelector('#txtinput');
+		var btnspeak=document.querySelector('#btnspeak');
+		var tts=window.speechSynthesis;
+		btnspeak.addEventListener('click',()=>{
+		var voices=tts.getVoices();
+		var toSpeak=new SpeechSynthesisUtterance(textinput.value);
+		tts.speak(toSpeak);
+		});
+	</script>
+</body>
+</html>

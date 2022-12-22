@@ -1,0 +1,60 @@
+<html>
+<head>
+ 	<style>
+		@font-face {
+		font-family: myFirstFont;
+		src: url(/static/edo.ttf);
+		}
+		@font-face {
+		font-family: mySecondFont;
+		src: url(/static/btfont.otf);
+		}
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+		body {
+		background-image:url('static/bg2.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		background-attachment:fixed;
+		}
+		div {
+  		background-color:rgba(0,0,0,0.5);
+  		width: 1250px;
+		height:450px;
+  		/*border: 1px solid black;*/
+  		padding: 50px;
+  		margin-top: 150px;
+		margin-left:450px;
+		font-size:190px;
+		font-family:myFirstFont;
+		color:white;
+		text-align:center;
+		}
+		input[type=file]{
+		font-family:mySecondFont;
+		margin-left:460px;
+		margin-top:150px;
+		font-size:49px;
+		}
+		input[type=submit]{
+		font-family: mySecondFont;
+		font-size:49px;
+		margin-left:460px;
+		margin-top:150px;
+		}
+	</style>
+</head> 
+<body>
+	<div id="vr">
+		Vision Recognition
+	</div>
+
+	<form action="{{url_for('after')}}" method='POST' enctype='multipart/form-data'>
+	
+    		<input type="file" name='file1' style="font-family:mySecondFont" accept="image/*" capture>
+		<br>
+		<input type="submit" value="Upload Picture">
+
+	</form>
+<body>
+</html>
